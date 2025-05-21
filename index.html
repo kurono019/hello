@@ -3,86 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Are You Okay?</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background-color: #f0f8ff;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      margin: 10px;
-      cursor: pointer;
-    }
-    .yes-button {
-      background-color: green;
-      color: white;
-    }
-    .no-button {
-      background-color: #f44336;
-      color: white;
-    }
-    .next-button {
-      background-color: pink;
-      color: white;
-    }
-    #response {
-      margin-top: 30px;
-      font-size: 24px;
-      color: #333;
-    }
-    #second-question {
-      margin-top: 40px;
-      font-size: 22px;
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <h1>Hey, are you okay?</h1>
   <div id="first-buttons">
-    <button class="yes-button" onclick="respondYes()">Yes</button>
-    <button class="no-button" onclick="respondNo()">No</button>
+    <a href="yes.html"><button class="yes-button">Yes</button></a>
+    <a href="no.html"><button class="no-button">No</button></a>
   </div>
-
-  <div id="response"></div>
-
-  <div id="second-question">
-    <p>Why do birds?</p>
-    <button class="next-button" onclick="answerBirds()">Why do birds what?</button>
-    <div id="bird-response"></div>
-  </div>
-
-  <!-- Audio element -->
-  <audio id="ITO NA" src="/storage/emulated/O/idk/ITO NA.mp3"></audio>
-
-  <script>
-    function respondYes() {
-      document.getElementById("response").innerText = "I'm really really glad to hear that po!";
-      document.getElementById("first-buttons").style.display = "none";
-      showSecondQuestion();
-    }
-
-    function respondNo() {
-      document.getElementById("response").innerText = "I'm sorry to hear that. I know I can't make you trust me again but I just wanna tell you I'm here for you.";
-      document.getElementById("first-buttons").style.display = "none";
-      showSecondQuestion();
-    }
-
-    function showSecondQuestion() {
-      document.getElementById("second-question").style.display = "block";
-    }
-
-    function answerBirds() {
-      document.getElementById("bird-response").innerText = "Ask me and you'll know po:))";
-      document.getElementById("ITO NA").play();
-    }
-  </script>
 
 </body>
 </html>
