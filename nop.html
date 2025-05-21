@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Jozelle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: left;
+            padding: 10px;
+            margin: 0;
+            transition: background-color 1s;
+            position: relative;
+        }
+        .letter {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 2s forwards;
+            display: none;
+            word-wrap: break-word;
+            line-height: 1.6;
+        }
+@keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .heart-button, .next-button {
+            background: #ffcccb;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 10px;
+        }
+        .heart-button:hover, .next-button:hover {
+            transform: scale(1.1);
+        }
+        .next-button {
+            display: none;
+        }
+        .floating-heart {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: red;
+            animation: floatUp 3s infinite ease-in-out;
+            display: none;
+        }
+@keyframes floatUp {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -20px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -40px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="heart-button" onclick="startLetter()">❤️</button>
+
+    <div class="letter" id="letter">
+        <h2 id="letter-header">Dear, Jozelle</h2>
+        <p id="letter-text"></p>
+        <h2 id="letter-footer" style="display: none;">From, Halata Mong Admirer</h2>
+        <button class="next-button" id="next-button" onclick="nextPart()">Next</button>
+    </div>
+
+    <div class="floating-heart" id="floating-heart">
+        ❤️
+    </div>
+
+    <script>
+        let parts = [
+            "Hi I'm just leaving this for you to read sorry kung di sya physical letter pangit ksi aku mag sulat like as in kahit tanong mo pa sila lanaya😞and ito lang ung pinaka unique na way na naisip ko para gawan ka ng letter so i hope you appreciate it!!",
+            "First of all, Congratssss sa moving up mo and with honors!!!! I'm delighted to see that you got a good achievement po!!! soooo un congratsss.",
+            "Now ano hehe i wanna tell you a story on how i came to have these feelings for you. So it's been like a month since i laid eyes on you and it all started when our eyes met when i was tryna prank lanaya by opening her bag hehe.",
+            "When i looked at you my thoughts came flooding in 'what the...', 'ang ganda nya...', 'may ganto palang kagandahan sa mundo', 'ano kaya pangalan niya....'.",
+            "But actually I've been seeing you for a long time but haven't noticed. So yeah after that the voices in my head we're always asking about you, telling me 'itanong mo na kay lanaya kung sino bayon', 'hanapin mo na ung section nya' 'tignan mo na kung saan sya naka room'.",
+            "Then one day while i was helping Ma'am Vismanos with her stuff because she usually lets me and my classmates carry her stuff to her next class which was section sampaloc that is located right beside the stair case.",
+            "So me and my classmate carried Ma'am Vismanos's stuff to section sampaloc then left to go back to our room i decided that i should go walk on the third floor to the other side of the building because it's faster to get to our room that way.",
+            "So while i was walking to the other side of the building i turned to see the sections that were in the third floor. Then i saw you listening to your teacher while you were i think at your group? I don't know if may groupings kayo nun because i just saw y'all's seats were circled.",
+            "So yeah i saw you and the thoughts came back telling me to 'come back every time you get a chance'. So i did. Everytime i was helping Ma'am Vismanos, i stare at you for like a second.",
+            "I'm sorry if that's creepy it's never my intention to creep you out because i was just admiring the beauty that you possess.",
+            "Then one day it was break time then i started to go down to the third floor with my friend and i saw you again. With your friend then i don't know, that was when i started to always go to the third floor just to see you.",
+            "Then the career day happened i tried to tell you and lanaya na mag ingat!?!?! and ayun i thought to myself 'weirdo mo talaga'.",
+            "And yeah that was when it all started. While time is still passing I've developed my feelings for you. A pure one, but I admit that at first, it was just an attraction to your beauty.",
+            "As time goes on i find myself always thinking about the times when we talked, the times where i find myself looking at you, every second of our interaction, and i still can't stop thinking about it.",
+            "It's just like that one line from a song i know 'My infatuation is translatin to another form of what you call it'.",
+            "My friends call me stupid because I know you already sent me a bunch of signs to leave you be or that you don't want me but i can't let this school year end without being clear to myself.",
+            "I like you Jozelle and I'm sure you probably know that but what you don't know is that what I'm feeling isn't just infatuation what I'm feeling is genuine.",
+            "When i say 'I like you' i meant that i like your vibe, your looks, your typings, your style, your hair, your presence, your eyes, your smell, your anything that I've noticed.",
+            "I've never stopped caring about you even if we haven't talked nor interacted for a pretty long time. Even right now while I'm writing this message for you knowing that you'll probably ignore it, I'm still thinking about the possible scenarios that will happen once i send this message to you.",
+            "I know it's wrong and some people might say i lack self respect but i just have to get through this thing that I'm feeling and i think this is the only way for me to get through it.",
+            "Til now I'm still regretting for not apologizing because i made you uncomfortable so i apologize for all of the time where i made you uncomfortable not just at the gala event but in our every meeting and interactions.",
+            "I already know that you aren't interested in me so it's okay but if you feel like talking to me then be my guest but if you're not then it's okay if you don't respond or you can even just block me or something....",
+            "Thank you for interacting with me even if you weren't comfy and i appreciate every word you said to me and umm thank you for being a small part of my life.",
+            "Yun lang, goodluck sa buhay buhay Elle take care!!!!!! (⁠.⁠ ❛⁠ ᴗ⁠ ❛⁠.⁠) ❤️"
+        ];
+
+        let index = 0;
+
+        function startLetter() {
+            document.body.style.backgroundColor = "#ffcccb";
+            document.querySelector('.heart-button').style.display = 'none';
+            document.getElementById('letter').style.display = 'block';
+            document.getElementById('next-button').style.display = 'block';
+            nextPart();
+        }
+
+        function nextPart() {
+            if (index === 0) {
+                document.getElementById('letter-header').style.display = 'block';
+            } else {
+                document.getElementById('letter-header').style.display = 'none';
+            }
+
+            if (index < parts.length) {
+                document.getElementById('letter-text').innerText = parts[index++];
+            }
+
+            if (index === parts.length) {
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('floating-heart').style.display = 'block';
+                document.getElementById('letter-footer').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
