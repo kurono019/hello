@@ -1,179 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Jozelle</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: white;
-      transition: background-color 1s;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .envelope-wrapper {
-      width: 220px;
-      height: 140px;
-      position: relative;
-      background-color: #ff9999;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .envelope-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 70px;
-      background-color: #ffcccc;
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      z-index: 2;
-      transition: transform 0.6s ease-in-out;
-      transform-origin: top;
-    }
-
-    .envelope-wrapper.open .envelope-flap {
-      transform: rotateX(180deg);
-    }
-
-    .open-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: transparent;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    .letter {
-      display: none;
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 500px;
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 2s forwards;
-      word-wrap: break-word;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .next-button {
-      background: #ffcccb;
-      color: white;
-      border: none;
-      padding: 15px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s;
-      margin-top: 10px;
-      display: none;
-    }
-
-    .next-button:hover {
-      transform: scale(1.1);
-    }
-
-    .floating-heart {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 30px;
-      color: red;
-      animation: floatUp 3s infinite ease-in-out;
-      display: none;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translate(-50%, 0); opacity: 1; }
-      50% { transform: translate(-50%, -20px); opacity: 0.8; }
-      100% { transform: translate(-50%, -40px); opacity: 0; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>I'm Glad!</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="envelope-wrapper" id="envelope">
-    <div class="envelope-flap" id="flap"></div>
-    <button class="open-button" onclick="openEnvelope()">❤️</button>
+  <div id="response">
+    I'm really really glad to know that you're doing well po. I hope bad days will stay far away from you.
   </div>
 
-  <div class="letter" id="letter">
-    <h2 id="letter-header">Dear, Jozelle</h2>
-    <p id="letter-text"></p>
-    <h2 id="letter-footer" style="display: none;">From, Halata Mong Admirer</h2>
-    <button class="next-button" id="next-button" onclick="nextPart()">Next</button>
-  </div>
+  <a href="next.html">
+    <button class="next-button">Can I tell you something?</button>
+  </a>
 
-  <div class="floating-heart" id="floating-heart">
-🌹</div>
-
-  <script>
-    let parts = [
-      "Hello again Elle, first of all i wanna say congratulations on the moving up once again and i want you to know that I'll always be rooting for you po and you did good po! I hope you keep get more success next time and yun lang hehe, baka may makita ka na pumapalakpak na otnis sa section apitong????. So yeah, you'll probably see this message if i ever get the courage to give you this goofy ahh bouquet. I made this myself (except for the white ones that obviously looks like it's been made by another person). And ayun I don't even know why i made this, maybe because Lanaya suggested it? Maybe cause i wanted to show you another effort? I really don't know myself haha. But what i do know is that i just want to see how you'll react when i give this to you. I'm curious if you'll be surprised even if i told you what i was about to do, will you just upright accept it without any reactions, or will you just upright reject it so yeah.",
-      "I've still been missing the times that we talked to each other even though i know that you probably aren't interested in talking to me. These days I've been thinking if i really should pursue or not. Well thinking about it got me trippin for a bunch of days bruh like my head got filled with this thought 'gusto niya bang mapursue siya?', 'maybe i should pursue','i shouldn't disturb her anymore', and a bunch of other clustered up thoughts, even now i still don't know what to do... and I'm so sorry for that. While writing this message I'm still making the last rose so yeah by the way did you know that when you open a door, somebody will come in? Yeah just random facts. Well yeah so umm this is my first time putting this much effort so i hope you appreciate it. This message would probably come in a website again so I'm sorry if the page is too basic, maybe I'll add something on the code so it'll look different (the envelope thingy). So yeah ayun lang naman sasabihin ko so yeah. Once again, Goodluck sa buhay-buhay Elle(⁠*⁠´⁠ω⁠｀⁠*⁠) ❤️"
-      // Add all your full parts here
-    ];
-
-    let index = 0;
-
-    function openEnvelope() {
-      const envelope = document.getElementById('envelope');
-      envelope.classList.add('open');
-
-      setTimeout(() => {
-        envelope.style.display = 'none';
-        document.body.style.backgroundColor = "#ffcccb";
-        document.getElementById('letter').style.display = 'block';
-        document.getElementById('next-button').style.display = 'block';
-        nextPart();
-      }, 800);
-    }
-
-    function nextPart() {
-      if (index === 0) {
-        document.getElementById('letter-header').style.display = 'block';
-      } else {
-        document.getElementById('letter-header').style.display = 'none';
-      }
-
-      if (index < parts.length) {
-        document.getElementById('letter-text').innerText = parts[index++];
-      }
-
-      if (index === parts.length) {
-        document.getElementById('next-button').style.display = 'none';
-        document.getElementById('floating-heart').style.display = 'block';
-        document.getElementById('letter-footer').style.display = 'block';
-      }
-    }
-  </script>
 </body>
 </html>
